@@ -1,0 +1,143 @@
+:root {
+    --bg-color: #0d0208;
+    --main-acent: #00ff41;
+    --neon-accent: #39ff14;
+    --purple-neon: #bc13fe; /* Сделал фиолетовый ярче, чтобы его было видно */
+    --font-main: 'Courier New', Courier, monospace;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+    color: white; /* Базовый цвет текста, чтобы ничего не пропадало */
+}
+
+/* --- HEADER --- */
+header {
+    background-color: var(--bg-color);
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Центрируем текст и навигацию по вертикали */
+    padding: 0 5vw; /* Отступы по бокам, чтобы текст не прилипал к краям */
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+header p {
+    color: var(--purple-neon);
+    font-family: "Climate Crisis", sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--purple-neon);
+    font-size: clamp(14px, 2vw, 18px);
+    font-family: sans-serif;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+header nav a:hover {
+    color: var(--neon-accent);
+    text-shadow: 0 0 10px var(--neon-accent);
+}
+
+nav img {
+    display: none; 
+    width: 30px;
+    cursor: pointer;
+}
+
+/* --- BANNER --- */
+.bannerdiv {
+    display: flex;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.bannerdiv h1 {
+    color: var(--main-acent);
+    font-family: "Press Start 2P", system-ui;
+    font-size: clamp(15px, 5vw, 42px);
+    margin: 0 0 0 5vw;
+    line-height: 1.2;
+}
+
+.cursor {
+    display: inline-block;
+    width: 0.6em;  
+    height: 1em;   
+    background-color: white;
+    margin-left: 10px; 
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+.navigation.navigationphone {
+    position: fixed;    /* Фиксируем на весь экран */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(13, 2, 8, 0.98); /* Почти черный, чуть прозрачный */
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 15;       /* Поверх всего контента */
+}
+
+nav img{
+    z-index: 16;
+}
+
+.navigationphone #BurgerMenuBtn {
+    position: absolute !important;
+    top: 5vh;
+    right: 5vw;
+    z-index: 20;
+}
+.navigation.navigationphone a {
+    display: block !important; /* Обязательно с !important, чтобы перебить скрытие */
+    color: var(--neon-accent); /* Неоново-зеленый цвет, чтобы было видно на черном */
+    font-size: 2rem;           /* Делаем буквы большими для телефонов */
+    margin: 20px 0;            /* Отступы между ссылками */
+    text-align: center;
+    z-index: 20;               /* Поднимаем текст на самый верхний слой */
+}
+
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* --- MEDIA QUERIES (ВСЕГДА В КОНЦЕ) --- */
+
+@media (max-width: 768px) {
+    header {
+        height: 10vh;
+    }
+}
+
+@media (max-width: 499px) {
+    header nav a {
+        display: none; /* Прячем ссылки на мобилках */
+    }
+    nav img {
+        display: block; /* Показываем иконку меню (не забудь добавить её в HTML) */
+    }
+}
