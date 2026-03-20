@@ -1,15 +1,23 @@
 :root {
     --bg-color: #0d0208;
-    --main-acent: #00ff41;
+    --main-acent: #00ff40;
     --neon-accent: #39ff14;
     --purple-neon: #bc13fe; /* Сделал фиолетовый ярче, чтобы его было видно */
     --font-main: 'Courier New', Courier, monospace;
 }
 
+html{
+    scroll-behavior: smooth;
+    scroll-timeline: --fullpagescroll block;
+}
+
 body {
+    scrollbar-width: 1px;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    
+    scroll-behavior: smooth;
     background-color: var(--bg-color);
     color: white; /* Базовый цвет текста, чтобы ничего не пропадало */
 }
@@ -18,6 +26,7 @@ body {
 header {
     background-color: var(--bg-color);
     width: 100%;
+    transition: all 1s ease-in-out;
     height: 15vh;
     display: flex;
     justify-content: space-between;
@@ -118,6 +127,153 @@ nav img{
     margin: 20px 0;            /* Отступы между ссылками */
     text-align: center;
     z-index: 20;               /* Поднимаем текст на самый верхний слой */
+}
+
+.startBtn{
+    width: 10vw;
+    height: 2vh;
+    text-decoration: none;
+    color: white;
+    border: 1px solid var(--neon-accent);
+    padding: 20px 80px 20px 80px ;
+    font-size: 30px;
+    font-family: sans-serif;
+    border-radius: 10px;
+    position: relative;
+    top: 20vh;
+    left: 5vw;
+    transition: 1s ease-in-out;
+
+}
+
+.startBtn:hover{
+    background-color: var(--main-acent);
+    
+    text-shadow: 0 0 200px rgb(249, 255, 251);
+    animation: neonLight 5s ease-in infinite;
+}
+
+.portfolioSection{
+    position: relative;
+    top: 500px;
+    width: 100vw;
+    height: 1000px;
+    background-color: #0a0d2d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+}
+.slider{
+    display: flex;
+    gap: 20px;
+
+    height: 40vh;
+   
+    
+   transition: all 0.4s ease-in-out;
+}
+
+.site-card{
+    width: 15vw;
+    flex-shrink: 0 ;
+    height: 40vh;
+    background-color: black;
+    margin: 10px;
+    border-radius: 10px;
+    transform: translateX(15vw) translateX(40px);
+    opacity: 0.4;
+    overflow: hidden;
+
+}
+
+#sidecard-1 img{
+    border-radius: 10px;
+    z-index: 1;
+    opacity: 0.9;
+    
+}
+
+#sidecard-1 div{
+    background-image: linear-gradient(90deg, black, rgba(0, 0, 0, 0));
+    width: 15vw;
+    height: 40vw;
+    z-index: 2;
+}
+
+#sidecard-1:hover{
+    transform: scale(1.1);
+}
+
+.sidecard{
+    opacity: 1;
+    
+}
+.portfolioSection button{
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding: 5px;
+}
+
+.portfolioSection div{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    
+}
+.portfolioSection button:hover{
+    background-color: #00000046;
+}
+
+.slider-viewport{
+    overflow: hidden;
+    width: 100vw;
+}
+
+.portfolioSection h1{
+    animation: infcarusel 1s linear infinite ;
+}
+
+@keyframes infcarusel {
+    to{
+        transform: translateX(calc(-4 * 200));
+    }
+}
+
+@keyframes scrollanim {
+    from{
+        transform: translateY(-25px);
+        transform: translateX(40px) scale(0.3);
+        opacity: 0;
+        
+    }
+}
+
+@keyframes neonLight {
+    0%{
+        box-shadow: 0 0 0 var(--neon-accent), 0 0 0 white;
+    }
+    30%{
+        box-shadow: 0 0 100px var(--neon-accent), 0 0 30px white;
+    }
+    50%{
+        box-shadow: 0 0 100px var(--neon-accent), 0 0 30px rgb(3, 232, 38);
+    }
+    60%{
+        box-shadow: 0 0 100px #019025, 0 5px 30px rgb(3, 232, 38);
+    }
+    65%{
+         box-shadow: 0 0 100px #608b6a, 0 5px 30px rgb(3, 232, 38);
+    }
+    70%{
+         box-shadow: 0 0 100px #03cc35, 0 5px 30px rgb(3, 232, 38);
+    }
+
+    90%{
+        box-shadow: 0 0 100px var(--neon-accent), 5px 0 30px rgb(3, 232, 38);
+    }
+    
 }
 
 
